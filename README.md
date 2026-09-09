@@ -1,1 +1,1111 @@
-# cherry-fiber
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cherry Fiber | ចាហួយសម្រករាងធម្មជាតិ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #7CB342;
+      --primary-light: #AED581;
+      --primary-dark: #558B2F;
+      --accent: #C5E1A5;
+      --bg: #F7FBF4;
+      --bg-soft: #E8F5E9;
+      --text: #2E3A2B;
+      --text-light: #5A6B57;
+      --white: #FFFFFF;
+      --shadow: 0 8px 30px rgba(124, 179, 66, 0.12);
+      --radius: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans Khmer', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(247, 251, 244, 0.95);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--primary-dark);
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .logo-text {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      color: var(--primary);
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      cursor: pointer;
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 24px 80px;
+      background: linear-gradient(160deg, #F7FBF4 0%, #E8F5E9 50%, #C8E6C9 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(174, 213, 129, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .hero-content h1 span {
+      color: var(--primary-dark);
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--text-light);
+      margin-bottom: 32px;
+      max-width: 480px;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: 0 6px 20px rgba(124, 179, 66, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(124, 179, 66, 0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-dark);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .product-showcase {
+      width: 100%;
+      max-width: 440px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .product-showcase img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+    }
+
+    .product-showcase-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(46, 58, 43, 0.75));
+      padding: 24px;
+      color: white;
+    }
+
+    .product-showcase-overlay h3 {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+    }
+
+    .product-showcase-overlay p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    /* ========== FEATURES ========== */
+    .features {
+      padding: 80px 24px;
+      background: var(--white);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 50px;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .section-header p {
+      color: var(--text-light);
+      font-size: 1.05rem;
+    }
+
+    .features-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: var(--bg);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      transition: all 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: var(--accent);
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+      color: white;
+    }
+
+    .feature-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+
+    /* ========== PRODUCTS ========== */
+    .products {
+      padding: 80px 24px;
+      background: var(--bg-soft);
+    }
+
+    .products-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(124, 179, 66, 0.18);
+    }
+
+    .product-img {
+      height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .product-card:hover .product-img img {
+      transform: scale(1.06);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--primary-dark);
+      color: white;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      z-index: 2;
+    }
+
+    .product-info {
+      padding: 24px;
+    }
+
+    .product-info h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .product-info p {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+
+    .product-price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .price small {
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+
+    /* ========== ABOUT ========== */
+    .about {
+      padding: 80px 24px;
+      background: var(--white);
+    }
+
+    .about-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      height: 420px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-content h2 {
+      font-size: 2.1rem;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .about-content p {
+      color: var(--text-light);
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 32px;
+    }
+
+    .stat-item h4 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      font-weight: 700;
+    }
+
+    .stat-item p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    /* ========== CONTACT ========== */
+    .contact {
+      padding: 80px 24px;
+      background: var(--bg-soft);
+    }
+
+    .contact-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+    }
+
+    .contact-info {
+      background: linear-gradient(160deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 48px 36px;
+    }
+
+    .contact-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .contact-info > p {
+      opacity: 0.9;
+      margin-bottom: 28px;
+      font-size: 0.98rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .contact-item .icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .contact-item h4 {
+      font-size: 0.95rem;
+      margin-bottom: 4px;
+    }
+
+    .contact-item span {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    /* Social Buttons */
+    .social-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      color: white;
+    }
+
+    .social-btn.telegram {
+      background: #229ED9;
+    }
+
+    .social-btn.telegram:hover {
+      background: #1b8bc0;
+      transform: translateY(-2px);
+    }
+
+    .social-btn.facebook {
+      background: #1877F2;
+    }
+
+    .social-btn.facebook:hover {
+      background: #1565d8;
+      transform: translateY(-2px);
+    }
+
+    .social-btn .social-icon {
+      width: 28px;
+      height: 28px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .contact-form {
+      padding: 48px 36px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #E0E0E0;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+      background: var(--bg);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--text);
+      color: #B0BEC5;
+      padding: 50px 24px 30px;
+    }
+
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand .logo-text {
+      color: white;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      max-width: 300px;
+    }
+
+    .footer-links h4 {
+      color: white;
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: #B0BEC5;
+      text-decoration: none;
+      font-size: 0.92rem;
+      display: block;
+      margin-bottom: 10px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .footer-social a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 0.88rem;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 900px) {
+      .hero-container,
+      .about-container,
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-image {
+        height: 300px;
+      }
+
+      .product-showcase img {
+        height: 340px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        gap: 16px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .hero-content h1 {
+        font-size: 1.9rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="nav-container">
+      <a href="#home" class="logo">
+    <div class="">🍒</div>
+        <div class="logo-text">Cherry <span>Fiber</span></div>
+      </a>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#home">ទំព័រដើម</a></li>
+          <li><a href="#products">ផលិតផល</a></li>
+          <li><a href="#about">អំពីយើង</a></li>
+          <li><a href="#contact">ទំនាក់ទំនង</a></li>
+        </ul>
+      </nav>
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <h1>ចាហួយសម្រក ឈើរីហ្វាយប៊ឺ<br><span>ធម្មជាតិ ១០០%</span></h1>
+        <p>
+          Cherry Fiber ជាចាហួយសម្រករាងដែលផលិតពីផ្លែឈើរី​ និង​ ផ្លែឈើស្រស់ៗធម្មជាតិ 
+          ជួយកាត់បន្ថយចំណង់អាហារបានល្អដោយមិនប៉ះពាល់ដល់សុខភាព។        </p>
+        <div class="hero-btns">
+          <a href="#products" class="btn btn-primary">មើលផលិតផល →</a>
+          <a href="#about" class="btn btn-outline">ស្វែងយល់បន្ថែម</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <div class="product-showcase">
+          <img src="https://6aa125e5abc6c1d2a7437042.imgix.net/sandbox/2026%203%20copy.jpg?w=800&q=80" alt="Cherry Fiber - ផ្លែឈើរីស្រស់">
+          <div class="product-showcase-overlay">
+            <h3>Cherry Fiber Jelly</h3>
+            <p>សម្រករាង • ធម្មជាតិ ១០០%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="section-header">
+      <h2>ហេតុអ្វីត្រូវជ្រើសរើស Cherry Fiber?</h2>
+      <p>ផលិតផលរបស់យើងត្រូវបានបង្កើតឡើងពីគ្រឿងផ្សំធម្មជាតិ សុវត្ថិភាព និងមានប្រសិទ្ធភាព</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🌿</div>
+        <h3>ធម្មជាតិ ១០០%</h3>
+        <p>ផលិតពីផ្លែឈើរី និងគ្រឿងផ្សំធម្មជាតិ មិនមានសារធាតុគីមីបង្កគ្រោះថ្នាក់</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🍒</div>
+        <h3>ជួយសម្រករាង</h3>
+        <p>ជួយបន្ថយចំណង់អាហារ និងរំលាយជាតិខ្លាញ់ ក្បាលពោះ បឿ ក កំភួនជើង ដើមដៃ កំភ្លៅយ៉ាងមានប្រសិទ្ធភាពខ្ពស់</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">😋</div>
+        <h3>ងាយស្រួលញាំ & រសជាតិឆ្ងាញ់</h3>
+        <p>រសជាតិផ្លែឈើរីធម្មជាតិ ងាយស្រួលទទួលទាន អាចញាំបានមួយថ្ងៃ2ដង ព្រឹក1ដង ល្ងាច1ដង  មួយដងអាចញាំបាន 2​កញ្ចប់</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+    <div class="section-header">
+      <h2>ផលិតផលរបស់យើង</h2>
+      <p>ចាហួយសម្រករាងដែលត្រូវបាន Feed Back ពីអតិថិជនជាច្រើនអ្នកនាក់</p>
+    </div>
+    <div class="products-grid">
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">ឆុតពេញនិយម</span>
+          <img src="https://6aa125e5abc6c1d2a7437042.imgix.net/sandbox/6%E2%80%8Bbox.jpg?w=600&q=80" alt="ឆុត 5 ប្រអប់">
+        </div>
+        <div class="product-info">
+          <h3>ឆុត 5 ប្រអប់</h3>
+          <p>ទិញឆុត 5 ប្រអប់ ថែមជូន 1ប្រអប់ និង ហ្រ្វីសេវាដឹកជញ្ជូន</p>
+          <div class="product-price">
+            <div class="price">$55 <small>/6ប្រអប់</small></div>
+            <a href="#contact" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.9rem;">បញ្ជាទិញ</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://6aa125e5abc6c1d2a7437042.imgix.net/sandbox/1%E2%80%8Bbox.jpg?w=600&q=80" alt="ឈើរី ហ្វាយប៊ឺ 1ប្រអប់">
+        </div>
+        <div class="product-info">
+          <h3>ឈើរី ហ្វាយប៊ឺ 1ប្រអប់</h3>
+          <p>ឈុត 1 ប្រអប់ អាចស្រកពី 1​kg ដល់ 5kg សម្រាប់បងប្អូនដែលស្រួលស្រក។</p>
+          <div class="product-price">
+            <div class="price">$15 <small>/1ប្រអប់</small></div>
+            <a href="#contact" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.9rem;">បញ្ជាទិញ</a>
+          </div>
+        </div>
+      </div>
+      
+<div class="product-card">
+        <div class="product-img">
+          <img src="https://6aa125e5abc6c1d2a7437042.imgix.net/sandbox/2%E2%80%8Bbox.jpg?w=600&q=80" alt="ឈើរី ហ្វាយប៊ឺ 2ប្រអប់">
+        </div>
+        <div class="product-info">
+          <h3>ឈើរី ហ្វាយប៊ឺ 2ប្រអប់</h3>
+          <p>ឈុត 2 ប្រអប់ (ហ្វ្រីសេវាដឹកជញ្ជូន) អាចស្រកពី 1​kg ដល់ 5kg សម្រាប់បងប្អូនដែលស្រួលស្រក។ </p>
+          <div class="product-price">
+            <div class="price">$27 <small>/2ប្រអប់</small></div>
+            <a href="#contact" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.9rem;">បញ្ជាទិញ</a>
+          </div>
+        </div>
+      </div>
+
+<div class="product-card">
+        <div class="product-img">
+          <img src="https://6aa125e5abc6c1d2a7437042.imgix.net/sandbox/3%E2%80%8Bbox.jpg?w=600&q=80" alt="ឈើរី ហ្វាយប៊ឺ 3ប្រអប់">
+        </div>
+        <div class="product-info">
+          <h3>ឈើរី ហ្វាយប៊ឺ 3ប្រអប់</h3>
+          <p>ឈុត 3 ប្រអប់ (ហ្វ្រីសេវាដឹកជញ្ជូន) អាចស្រកពី 1​kg ដល់ 5kg សម្រាប់បងប្អូនដែលស្រួលស្រក។ </p>
+          <div class="product-price">
+            <div class="price">$35 <small>/3ប្រអប់</small></div>
+            <a href="#contact" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.9rem;">បញ្ជាទិញ</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <span class="product-badge">ឆុតលក់ដាច់បំផុត</span>
+          <img src="https://6aa125e5abc6c1d2a7437042.imgix.net/sandbox/4box.jpg?w=600&q=80" alt="ឈើរី ហ្វាយប៊ឺ 3ប្រអប់">
+        </div>
+        <div class="product-info">
+          <h3>ឈើរី ហ្វាយប៊ឺ 4ប្រអប់</h3>
+          <p>ឈុត 4 ប្រអប់ (ហ្វ្រីសេវាដឹកជញ្ជូន) អាចស្រកពី 1​kg ដល់ 5kg សម្រាប់បងប្អូនដែលពិបាកក្នុងការស្រក។</p>
+          <div class="product-price">
+            <div class="price">$45 <small>/4ប្រអប់</small></div>
+            <a href="#contact" class="btn btn-primary" style="padding: 8px 18px; font-size: 0.9rem;">បញ្ជាទិញ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="https://6aa125e5abc6c1d2a7437042.imgix.net/sandbox/cover%20copy.jpg?w=800&q=80" alt="ធម្មជាតិ និងសុខភាព">
+      </div>
+      <div class="about-content">
+        <h2>អំពី Cherry Fiber</h2>
+        <p>
+          Cherry Fiber ផលិតឡើងពីគោលបំណងចង់ជួយមនុស្សគ្រប់រូបឱ្យសម្រេចបានគីឡូដែលខ្លួនចង់បានរាងស្លីមស្អាត តាមរយៈវិធីធម្មជាតិ និងសុវត្ថិភាពសម្រាប់សុខភាព។
+        </p>
+        <p>
+          យើងប្រើប្រាស់ផ្លែឈើរី និង​ ផ្លែឈើស្រស់ផ្សេងទៀតដែលមានគុណភាពខ្ពស់ រួមផ្សំជាមួយគ្រឿងផ្សំធម្មជាតិផ្សេងៗផងដែរ។ 
+          ដើម្បីបង្កើតចាហួយសម្រករាងដែលមានរសជាតិឆ្ងាញ់ និងមានប្រសិទ្ធភាពខ្ពស់។
+        </p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <h4>៥០០០+</h4>
+            <p>អតិថិជនពេញចិត្ត</p>
+          </div>
+          <div class="stat-item">
+            <h4>១០០%</h4>
+            <p>ធម្មជាតិ</p>
+          </div>
+          <div class="stat-item">
+            <h4>៥+</h4>
+            <p>ឆ្នាំបទពិសោធន៍</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="section-header" style="margin-bottom: 40px;">
+      <h2>ទំនាក់ទំនងមកយើង</h2>
+      <p>មានសំណួរ ឬចង់បញ្ជាទិញ? សូមទាក់ទងមកយើងភ្លាម!</p>
+    </div>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>ព័ត៌មានទំនាក់ទំនង</h2>
+        <p>យើងរួចរាល់ជួយអ្នកគ្រប់ពេលវេលា</p>
+        
+        <div class="contact-item">
+          <div class="icon">📍</div>
+          <div>
+            <h4>អាសយដ្ឋាន</h4>
+            <span>ភ្នំពេញ, កម្ពុជា</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">📞</div>
+          <div>
+            <h4>ទូរស័ព្ទ</h4>
+            <span>+855 15​ 75 09 02</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">✉️</div>
+          <div>
+            <h4>អ៊ីមែល</h4>
+            <span>info@cherryfiber.com</span>
+          </div>
+        </div>
+
+        <!-- Real Social Buttons -->
+        <div class="social-buttons">
+          <a href="https://t.me/CherryFiberKH" target="_blank" rel="noopener" class="social-btn telegram">
+            <span class="social-icon">📲</span>
+            Telegram: @RANE168
+          </a>
+          <a href="https://www.facebook.com/CherryFiberKH" target="_blank" rel="noopener" class="social-btn facebook">
+            <span class="social-icon">💌</span>
+            Facebook: Cherry FIBER
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label>ឈ្មោះរបស់អ្នក</label>
+            <input type="text" placeholder="បញ្ចូលឈ្មោះ" required>
+          </div>
+          <div class="form-group">
+            <label>លេខទូរស័ព្ទ</label>
+            <input type="tel" placeholder="012 345 678" required>
+          </div>
+          <div class="form-group">
+            <label>សារ</label>
+            <textarea placeholder="សរសេរសាររបស់អ្នកនៅទីនេះ..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit">ផ្ញើសារ</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="logo-text">Cherry <span style="color: var(--primary-light);">Fiber</span></div>
+        <p>ចាហួយសម្រករាងធម្មជាតិ ជួយអ្នកឱ្យមានរាងស្លីមស្អាត និងមិនប៉ះពាល់ដល់សុខភាព។</p>
+        <div class="footer-social">
+          <a href="https://t.me/CherryFiberKH" target="_blank" title="Telegram">📲</a>
+          <a href="https://www.facebook.com/CherryFiberKH" target="_blank" title="Facebook">💌</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>តំណភ្ជាប់</h4>
+        <ul>
+          <li><a href="#home">ទំព័រដើម</a></li>
+          <li><a href="#products">ផលិតផល</a></li>
+          <li><a href="#about">អំពីយើង</a></li>
+          <li><a href="#contact">ទំនាក់ទំនង</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>តាមដានយើង</h4>
+        <ul>
+          <li><a href="https://www.https://www.facebook.com/share/199ah9rvzr/" target="_blank">Facebook</a></li>
+          <li><a href="https://t.me/RANE168" target="_blank">Telegram</a></li>
+          <li><a href="https://www.instagram.com/ngim_rane?stkn=MW13a2F5dDBvbzEwZw==">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@ngimrane17?_r=1&_t=ZS-99aRS0kwkyn">TikTok</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Cherry Fiber. រក្សាសិទ្ធិគ្រប់យ៉ាង។
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('active');
+    }
+
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navMenu').classList.remove('active');
+      });
+    });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      alert('សូមអរគុណ! យើងនឹងទាក់ទងត្រលប់មកអ្នកឆាប់ៗនេះ។');
+      e.target.reset();
+    }
+  </script>
+</body>
+</html>
